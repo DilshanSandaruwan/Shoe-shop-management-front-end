@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Customer Form</title>
+</head>
+<body>
+<h1>Customer Form</h1>
+<form action="/submit" method="post">
+  <!-- Field for Customer Code -->
+  <div>
+    <label for="customerCode">Customer code:</label>
+    <input type="text" id="customerCode" name="customerCode" required>
+  </div>
+
+  <!-- Field for Customer Name -->
+  <div>
+    <label for="customerName">Customer name:</label>
+    <input type="text" id="customerName" name="customerName" required>
+  </div>
+
+  <!-- Field for Gender -->
+  <div>
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender">
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+    </select>
+  </div>
+
+  <!-- Field for Join Date (as a loyalty customer) -->
+  <div>
+    <label for="joinDate">Join date:</label>
+    <input type="date" id="joinDate" name="joinDate" required>
+  </div>
+
+  <!-- Field for Loyalty Level -->
+  <div>
+    <label for="loyaltyLevel">Level:</label>
+    <select id="loyaltyLevel" name="loyaltyLevel">
+      <option value="Gold">Gold</option>
+      <option value="Silver">Silver</option>
+      <option value="Bronze">Bronze</option>
+      <option value="New">New</option>
+    </select>
+  </div>
+
+  <!-- Field for Total Points -->
+  <div>
+    <label for="totalPoints">Total points:</label>
+    <input type="number" id="totalPoints" name="totalPoints" min="0">
+  </div>
+
+  <!-- Field for Date of Birth -->
+  <div>
+    <label for="dob">Date of birth:</label>
+    <input type="date" id="dob" name="dob">
+  </div>
+
+  <div>
+    <label for="Contact">Contact No:</label>
+    <input type="text" id="Contact" name="Contact">
+  </div>
+
+  <div>
+    <label for="Email">Email:</label>
+    <input type="text" id="Email" name="Email">
+  </div>
+  <!-- Address Fields -->
+  <div>
+    <h2>Address</h2>
+    <!-- Address Line 01 (Building no or name) -->
+    <div>
+      <label for="addressLine01">Address Line 01:</label>
+      <input type="text" id="addressLine01" name="addressLine01" required>
+    </div>
+
+    <!-- Address Line 02 (Lane) -->
+    <div>
+      <label for="addressLine02">Address Line 02:</label>
+      <input type="text" id="addressLine02" name="addressLine02">
+    </div>
+
+    <!-- Address Line 03 (City) -->
+    <div>
+      <label for="addressLine03">Address Line 03:</label>
+      <input type="text" id="addressLine03" name="addressLine03" required>
+    </div>
+
+    <!-- Address Line 04 (State) -->
+    <div>
+      <label for="addressLine04">Address Line 04:</label>
+      <input type="text" id="addressLine04" name="addressLine04" required>
+    </div>
+
+    <!-- Address Line 05 (Postal Code) -->
+    <div>
+      <label for="addressLine05">Address Line 05:</label>
+      <input type="text" id="addressLine05" name="addressLine05" required>
+    </div>
+  </div>
+
+  <!-- Submit Button -->
+  <button type="submit">Submit</button>
+</form>
+</body>
+</html>

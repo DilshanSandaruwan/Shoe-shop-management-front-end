@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Employee Information Form</title>
+</head>
+<body>
+<h1>Employee Information Form</h1>
+<form action="/submit" method="post" enctype="multipart/form-data">
+  <!-- Field for Employee Code -->
+  <div>
+    <label for="employeeCode">Employee code:</label>
+    <input type="text" id="employeeCode" name="employeeCode" required>
+  </div>
+
+  <!-- Field for Employee Name -->
+  <div>
+    <label for="employeeName">Employee name:</label>
+    <input type="text" id="employeeName" name="employeeName" required>
+  </div>
+
+  <!-- Field for Employee Profile Picture -->
+  <div>
+    <label for="profilePic">Employee Profile Pic:</label>
+    <input type="file" id="profilePic" name="profilePic" accept="image/*">
+  </div>
+
+  <!-- Field for Gender -->
+  <div>
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender" required>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+    </select>
+  </div>
+
+  <!-- Field for Status -->
+  <div>
+    <label for="status">Status:</label>
+    <select id="status" name="status" required>
+      <option value="Active">Active</option>
+      <option value="Inactive">Inactive</option>
+    </select>
+  </div>
+
+  <!-- Field for Designation -->
+  <div>
+    <label for="designation">Designation:</label>
+    <input type="text" id="designation" name="designation" required>
+  </div>
+
+  <!-- Field for Access Role -->
+  <div>
+    <label for="accessRole">Access Role:</label>
+    <input type="text" id="accessRole" name="accessRole" required>
+  </div>
+
+  <!-- Field for Date of Birth -->
+  <div>
+    <label for="dob">Date of birth:</label>
+    <input type="date" id="dob" name="dob" required>
+  </div>
+
+  <!-- Field for Date of Join -->
+  <div>
+    <label for="dateOfJoin">Date of join:</label>
+    <input type="date" id="dateOfJoin" name="dateOfJoin" required>
+  </div>
+
+  <!-- Field for Attached Branch -->
+  <div>
+    <label for="attachedBranch">Attached Branch:</label>
+    <input type="text" id="attachedBranch" name="attachedBranch" required>
+  </div>
+
+  <!-- Address Fields -->
+  <div>
+    <h2>Address</h2>
+    <!-- Address Line 01 -->
+    <div>
+      <label for="addressLine01">Address Line 01:</label>
+      <input type="text" id="addressLine01" name="addressLine01" required>
+    </div>
+
+    <!-- Address Line 02 -->
+    <div>
+      <label for="addressLine02">Address Line 02:</label>
+      <input type="text" id="addressLine02" name="addressLine02">
+    </div>
+
+    <!-- Address Line 03 -->
+    <div>
+      <label for="addressLine03">Address Line 03:</label>
+      <input type="text" id="addressLine03" name="addressLine03">
+    </div>
+
+    <!-- Address Line 04 -->
+    <div>
+      <label for="addressLine04">Address Line 04:</label>
+      <input type="text" id="addressLine04" name="addressLine04">
+    </div>
+
+    <!-- Address Line 05 -->
+    <div>
+      <label for="addressLine05">Address Line 05:</label>
+      <input type="text" id="addressLine05" name="addressLine05">
+    </div>
+  </div>
+
+  <!-- Field for Contact Number -->
+  <div>
+    <label for="contactNo">Contact No.:</label>
+    <input type="text" id="contactNo" name="contactNo" required>
+  </div>
+
+  <!-- Field for Email -->
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+  </div>
+
+  <!-- Field for Inform in Case of Emergency -->
+  <div>
+    <label for="informEmergency">Inform in case of emergency:</label>
+    <input type="text" id="informEmergency" name="informEmergency" required>
+  </div>
+
+  <!-- Field for Emergency Contact -->
+  <div>
+    <label for="emergencyContact">Emergency Contact:</label>
+    <input type="text" id="emergencyContact" name="emergencyContact" required>
+  </div>
+
+  <!-- Submit Button -->
+  <button type="submit">Submit</button>
+</form>
+</body>
+</html>

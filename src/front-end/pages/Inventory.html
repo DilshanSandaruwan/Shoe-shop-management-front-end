@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Item Information Form</title>
+</head>
+<body>
+<h1>Item Information Form</h1>
+<form action="/submit" method="post" enctype="multipart/form-data">
+  <!-- Field for Item Code -->
+  <div>
+    <label for="itemCode">Item code:</label>
+    <input type="text" id="itemCode" name="itemCode" required>
+  </div>
+
+  <!-- Field for Item Description -->
+  <div>
+    <label for="itemDesc">Item desc:</label>
+    <input type="text" id="itemDesc" name="itemDesc" required>
+  </div>
+
+  <!-- Field for Item Picture -->
+  <div>
+    <label for="itemPicture">Item picture:</label>
+    <input type="file" id="itemPicture" name="itemPicture" accept="image/*">
+  </div>
+
+  <!-- Field for Category -->
+  <div>
+    <label for="category">Category:</label>
+    <input type="text" id="category" name="category" required>
+  </div>
+
+  <!-- Field for Size -->
+  <div>
+    <label for="size">Size:</label>
+    <input type="text" id="size" name="size">
+  </div>
+
+  <!-- Field for Supplier Code -->
+  <div>
+    <label for="supplierCode">Supplier code:</label>
+    <input type="text" id="supplierCode" name="supplierCode" required>
+  </div>
+
+  <!-- Field for Supplier Name -->
+  <div>
+    <label for="supplierName">Supplier name:</label>
+    <input type="text" id="supplierName" name="supplierName" required>
+  </div>
+
+  <!-- Field for Unit Price - Sale -->
+  <div>
+    <label for="unitPriceSale">Unit price - Sale:</label>
+    <input type="number" id="unitPriceSale" name="unitPriceSale" step="0.01" required>
+  </div>
+
+  <!-- Field for Unit Price - Buy -->
+  <div>
+    <label for="unitPriceBuy">Unit price - Buy:</label>
+    <input type="number" id="unitPriceBuy" name="unitPriceBuy" step="0.01" required>
+  </div>
+
+  <!-- Field for Expected Profit -->
+  <div>
+    <label for="expectedProfit">Expected Profit:</label>
+    <input type="number" id="expectedProfit" name="expectedProfit" step="0.01" required readonly>
+  </div>
+
+  <!-- Field for Profit Margin -->
+  <div>
+    <label for="profitMargin">Profit margin:</label>
+    <input type="number" id="profitMargin" name="profitMargin" step="0.01" required readonly>
+  </div>
+
+  <!-- Field for Status -->
+  <div>
+    <label for="status">Status:</label>
+    <select id="status" name="status" required>
+      <option value="Low">Low</option>
+      <option value="Available">Available</option>
+      <option value="Not Available">Not Available</option>
+    </select>
+  </div>
+
+  <!-- Submit Button -->
+  <button type="submit">Submit</button>
+
+  <script>
+    // Calculate expected profit and profit margin
+    document.getElementById('unitPriceSale').addEventListener('input', calculateProfitAndMargin);
+    document.getElementById('unitPriceBuy').addEventListener('input', calculateProfitAndMargin);
+
+    function calculateProfitAndMargin() {
+      const unitPriceSale = parseFloat(document.getElementById('unitPriceSale').value);
+      const unitPriceBuy = parseFloat(document.getElementById('unitPriceBuy').value);
+
+      const expectedProfit = unitPriceSale - unitPriceBuy;
+      const profitMargin = (expectedProfit / unitPriceSale) * 100;
+
+      document.getElementById('expectedProfit').value = expectedProfit.toFixed(2);
+      document.getElementById('profitMargin').value = profitMargin.toFixed(2);
+    }
+  </script>
+</form>
+</body>
+</html>
