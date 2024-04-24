@@ -3,6 +3,110 @@
 <head>
     <title>Sales Service Form</title>
     <script src="../framework/js/bootstrap.bundle.js"></script>
+
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+
+        h1, h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        form {
+            max-width: 600vw;
+            height: 100vh;
+            background-color: #b5179e;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* Button styles */
+        .btn-save {
+            background-color: #4CAF50; /* Green */
+            color: white;
+        }
+
+        .btn-getAll {
+            background-color: #2196F3; /* Blue */
+            color: white;
+        }
+
+        .btn-update {
+            background-color: #FFC107; /* Amber */
+            color: white;
+        }
+
+        .btn-delete {
+            background-color: #F44336; /* Red */
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        h2 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        div {
+            display: inline-block;
+            margin-bottom: 15px;
+            margin-right: 63px;
+        }
+    </style>
 </head>
 <body>
 <h1>Sales Service Form</h1>
@@ -10,7 +114,8 @@
     <!-- Field for Item Code -->
     <div>
         <label for="itemCode">Item code:</label>
-        <input type="text" id="itemCode" name="itemCode" required>
+        <select id="itemCode" name="itemCode">
+        </select>
     </div>
 
     <!-- Field for Order Number -->
@@ -22,13 +127,15 @@
     <!-- Field for Customer Name -->
     <div>
         <label for="customerName">Customer name:</label>
-        <input type="text" id="customerName" name="customerName" required>
+        <select id="customerName" name="customerName">
+        </select>
     </div>
 
     <!-- Field for Item Description -->
     <div>
         <label for="itemDesc">Item desc:</label>
-        <input type="text" id="itemDesc" name="itemDesc">
+        <select id="itemDesc" name="itemDesc">
+        </select>
     </div>
 
     <!-- Field for Size -->
@@ -45,8 +152,9 @@
 
     <!-- Field for Item Quantity -->
     <div>
-        <label for="itemQty">Item qty:</label>
-        <input type="number" id="itemQty" name="itemQty" min="1" required>
+        <label for="itemQTY">Item QTY:</label>
+        <select id="itemQTY" name="itemQTY">
+        </select>
     </div>
 
     <!-- Field for Total Price -->
@@ -82,8 +190,31 @@
         <input type="text" id="cashierName" name="cashierName" required>
     </div>
 
-    <!-- Submit Button -->
-    <button type="submit">Submit</button>
+    <div>
+        <button type="submit" class="btn-save">Save</button>
+        <button type="button" class="btn-getAll">GetAll</button>
+        <button type="button" class="btn-update">Update</button>
+        <button type="button" class="btn-delete">Delete</button>
+    </div>
+
+    <table>
+        <tr>
+            <th>Item code</th>
+            <th>Order no</th>
+            <th>Customer name</th>
+            <th>Item desc</th>
+            <th>Size</th>
+            <th>Unit price</th>
+            <th>Item qty</th>
+            <th>Total price</th>
+            <th>Purchase date</th>
+            <th>Payment method</th>
+            <th>Added points</th>
+            <th>Cashier name</th>
+        </tr>
+
+        <!-- Additional rows can be added here for more customers -->
+    </table>
 </form>
 
 <script>

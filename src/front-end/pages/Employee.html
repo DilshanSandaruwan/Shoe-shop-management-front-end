@@ -2,6 +2,123 @@
 <html lang="en">
 <head>
   <title>Employee Information Form</title>
+
+  <style>
+    /* General styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f9f9f9;
+    }
+
+    h1, h2 {
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    form {
+      max-width: 600vw;
+      height: 100vh;
+      background-color: #fcf6bd;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    /* Button styles */
+    .btn-save {
+      background-color: #4CAF50; /* Green */
+      color: white;
+    }
+
+    .btn-getAll {
+      background-color: #2196F3; /* Blue */
+      color: white;
+    }
+
+    .btn-update {
+      background-color: #FFC107; /* Amber */
+      color: white;
+    }
+
+    .btn-delete {
+      background-color: #F44336; /* Red */
+      color: white;
+    }
+
+    button:hover {
+      opacity: 0.8;
+    }
+
+    h2 {
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    div {
+      display: inline-block;
+      margin-bottom: 15px;
+      margin-right: 63px;
+    }
+
+    /* General styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f9f9f9;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f4f4f4;
+      font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+  </style>
 </head>
 <body>
 <h1>Employee Information Form</h1>
@@ -131,8 +248,34 @@
     <input type="text" id="emergencyContact" name="emergencyContact" required>
   </div>
 
-  <!-- Submit Button -->
-  <button type="submit">Submit</button>
+  <div>
+    <button type="submit" class="btn-save">Save</button>
+    <button type="button" class="btn-getAll">GetAll</button>
+    <button type="button" class="btn-update">Update</button>
+    <button type="button" class="btn-delete">Delete</button>
+  </div>
+
+  <table>
+    <tr>
+      <th>Employee code</th>
+      <th>Employee name</th>
+      <th>Employee Profile Pic</th>
+      <th>Gender</th>
+      <th>Status</th>
+      <th>Designation</th>
+      <th>Access Role</th>
+      <th>Date of birth</th>
+      <th>Date of join</th>
+      <th>Attached Branch</th>
+      <th>Address Line 01</th>
+      <th>Address Line 02</th>
+      <th>Address Line 03</th>
+      <th>Address Line 04</th>
+      <th>Address Line 05</th>
+    </tr>
+
+    <!-- Additional rows can be added here for more customers -->
+  </table>
 </form>
 </body>
 </html>
