@@ -3,8 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Meta tags
+============================================= -->
+    <meta charset="UTF-8">
+    <meta content="Dilshan sandaruwan" name="auther">
+    <meta content="Dilshan sandaruwan" name="owner">
 
+    <!--for responsive-->
+    <meta content="width=device-width initial-scale=1" name="viewport">
+
+    <!-- Document Title
+    ============================================= -->
+    <title> POS System</title>
+
+    <!-- Favicon
+   ============================================= -->
+    <link href="assets/images/img_1.png" rel="icon">
+
+    <!-- Stylesheets
+   ============================================= -->
+    <link href="assets/css/normalize.css" rel="stylesheet">
+    <link href="assets/css/common-styles.css" rel="stylesheet">
+
+    <!-- boostrap
+   ============================================= -->
+    <link href="assets/framework/css/bootstrap.css" rel="stylesheet">
+    <script src="assets/framework/js/bootstrap.js"></script>
+
+    <!-- fontawsome
+   ============================================= -->
+    <link href="assets/fontawsome/css/all.min.css" rel="stylesheet">
+
+    <!-- Google font links
+   ============================================= -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;900&display=swap"
+          rel="stylesheet">
     <style>
+
+        #loginform {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50vh;
+            margin: 0;
+        }
+
+        /* Container for the login form */
+        .login-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 350px;
+        }
+
+        /* Styling for the form */
+        .login-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Styling for form fields */
+        .form-field {
+            margin-bottom: 15px;
+        }
+
+        /* Styling for input fields */
+        input[type="text"],
+        input[type="password"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+        }
+
+        /* Styling for labels */
+        label {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        /* Styling for the submit button */
+        .login-button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        /* Hover effect for the button */
+        .login-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Styling for error message */
+        .error-message {
+            color: red;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+
+
         /* General styles */
         body {
             font-family: Arial, sans-serif;
@@ -120,16 +228,140 @@
         }
 
         #employeeform{
-            width: 120vw;
+            /*width: 100vw;*/
+            height: 140vh;
         }
     </style>
 </head>
 <body>
 
+<header id="navigation-bar">
+    <!--nav bar-->
+    <nav class="navbar navbar-expand-lg z-1" style="background-color: #3B8AD3;">
+        <div class="container-fluid">
+            <button aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation"
+                    class="navbar-toggler"
+                    data-bs-target="#navbarText" data-bs-toggle="collapse" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="goHome()">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           onclick="mngCustomer()">Customer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="mngItem()">Item</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="mngSales()">Sales</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           onclick="mngEmployee()">Employee</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="mngSupplier()">Supplier</a>
+                    </li>
+                </ul>
+
+                <a onclick="logoutBtn()" style="user-select: none; text-decoration: none "> Logout &nbsp;<i
+                        class="fa-solid fa-right-from-bracket"
+                        style="color: #ffffff;"></i>
+                </a>
+
+            </div>
+        </div>
+    </nav>
+</header>
+<!--/////////////Login/////////////-->
+<div id="login" class="login-container">
+    <h2>Login</h2>
+    <!-- Login form -->
+    <form id="loginform" class="login-form" method="post" action="/login">
+        <!-- Error message (hidden by default) -->
+        <div class="error-message" id="error-message" style="display: none;">
+            Invalid username or password. Please try again.
+        </div>
+
+        <!-- Username input -->
+        <div class="form-field">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+
+        <!-- Password input -->
+        <div class="form-field">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+
+        <!-- Submit button -->
+        <button type="submit" onclick="loginBtn()" class="login-button">Login</button>
+    </form>
+</div>
+
+<script>
+    // Optional: Handle form submission and display error message
+    const form = document.querySelector('.login-form');
+    const errorMessage = document.getElementById('error-message');
+
+    form.addEventListener('submit', (event) => {
+        // Prevent default form submission
+        event.preventDefault();
+
+        // Perform login logic here (e.g., send a request to the server)
+        // If login fails, display the error message
+        const isValid = true; // Replace with actual login validation logic
+
+        if (!isValid) {
+            errorMessage.style.display = 'block';
+        } else {
+            // Perform a successful login action
+        }
+    });
+</script>
+
+<!--/////////////Home/////////////-->
+<main id="home">
+    <section class="row z-0 w-75 h-25 position-absolute top-50 start-50 translate-middle"
+             style="column-gap: 1%; row-gap: 5%">
+        <button class="col btn btn-primary text-light " onclick="mngCustomer()">
+            <i class="fa-solid fa-user" style="color: #ffffff;"></i>
+            <br> Manage <br> Customer
+        </button>
+
+        <button class="col btn btn-primary text-light " onclick="mngItem()">
+            <i class="fa-solid fa-border-all" style="color: #ffffff;"></i> <br>
+            Manage <br> Item
+        </button>
+
+        <button class="col btn btn-primary text-light " onclick="mngSales()">
+            <i class="fa-solid fa-store" style="color: #ffffff;"></i>
+            <br> Manage <br> Sales
+        </button>
+
+        <button class="col btn btn-primary text-light " onclick="mngEmployee()">
+            <i class="fa-solid fa-user" style="color: #ffffff;"></i>
+            <br> Manage <br> Employee
+        </button>
+
+
+        <button class="col btn btn-primary text-light " onclick="mngSupplier()">
+            <i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i>
+            <br>Supplier
+        </button>
+    </section>
+</main>
+
 <!--Customer from-->
-<form action="/submit" method="post">
-    <h1>Customer Form</h1>
+
+<form action="/submit" method="post" id="manage-customer" >
     <!-- Field for Customer Code -->
+    <h1>Customer form</h1>
     <div>
         <label for="customerCode">Customer code:</label>
         <input type="text" id="customerCode" name="customerCode" required>
@@ -143,7 +375,7 @@
 
     <!-- Field for Gender -->
     <div>
-        <label for="gender">Gender:</label>
+        <label for="Cusgender">Gender:</label>
         <select id="Cusgender" name="gender">
             <option value="Male">Male</option>
             <option value="Female">Female</option>
@@ -153,14 +385,14 @@
 
     <!-- Field for Join Date (as a loyalty customer) -->
     <div>
-        <label for="CusjoinDate">Join date:</label>
-        <input type="date" id="CusjoinDate" name="joinDate" required>
+        <label for="joinDate">Join date:</label>
+        <input type="date" id="joinDate" name="joinDate" required>
     </div>
 
     <!-- Field for Loyalty Level -->
     <div>
-        <label for="CusloyaltyLevel">Level:</label>
-        <select id="CusloyaltyLevel" name="loyaltyLevel">
+        <label for="loyaltyLevel">Level:</label>
+        <select id="loyaltyLevel" name="loyaltyLevel">
             <option value="Gold">Gold</option>
             <option value="Silver">Silver</option>
             <option value="Bronze">Bronze</option>
@@ -176,13 +408,13 @@
 
     <!-- Field for Date of Birth -->
     <div>
-        <label for="Cusdob">Date of birth:</label>
-        <input type="date" id="Cusdob" name="dob">
+        <label for="dob">Date of birth:</label>
+        <input type="date" id="dob" name="dob">
     </div>
 
     <div>
-        <label for="CusContact">Contact No:</label>
-        <input type="text" id="CusContact" name="Contact">
+        <label for="Contact">Contact No:</label>
+        <input type="text" id="Contact" name="Contact">
     </div>
 
     <div>
@@ -253,131 +485,393 @@
 </form>
 
 <!--Employee form-->
-<form id="employeeform" action="/submit" method="post" enctype="multipart/form-data">
-    <h1>Employee Information Form</h1>
-    <!-- Field for Employee Code -->
-    <div>
-        <label for="employeeCode">Employee code:</label>
-        <input type="text" id="employeeCode" name="employeeCode" required>
-    </div>
+<div id="manage-employee" class="container">
 
-    <!-- Field for Employee Name -->
-    <div>
-        <label for="employeeName">Employee name:</label>
-        <input type="text" id="employeeName" name="employeeName" required>
-    </div>
+    <form  id="employeeform" action="/submit"   method="post" enctype="multipart/form-data">
+        <h1 class="my-4">Employee Information Form</h1>
+        <!-- Employee Code -->
+        <div class="mb-3">
+            <label for="employeeCode" class="form-label">Employee Code:</label>
+            <input type="text" id="employeeCode" name="employeeCode" class="form-control" required>
+        </div>
 
-    <!-- Field for Employee Profile Picture -->
-    <div>
-        <label for="profilePic">Employee Profile Pic:</label>
-        <input type="file" id="profilePic" name="profilePic" accept="image/*">
-    </div>
+        <!-- Employee Name -->
+        <div class="mb-3">
+            <label for="employeeName" class="form-label">Employee Name:</label>
+            <input type="text" id="employeeName" name="employeeName" class="form-control" required>
+        </div>
 
-    <!-- Field for Gender -->
+        <!-- Employee Profile Picture -->
+        <div class="mb-3">
+            <label for="profilePic" class="form-label">Employee Profile Pic:</label>
+            <input type="file" id="profilePic" name="profilePic" class="form-control" accept="image/*">
+        </div>
+
+        <!-- Gender -->
+        <div class="mb-3">
+            <label for="gender" class="form-label">Gender:</label>
+            <select id="gender" name="gender" class="form-select" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+
+        <!-- Status -->
+        <div class="mb-3">
+            <label for="status" class="form-label">Status:</label>
+            <select id="status" name="status" class="form-select" required>
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+            </select>
+        </div>
+
+        <!-- Designation -->
+        <div class="mb-3">
+            <label for="designation" class="form-label">Designation:</label>
+            <input type="text" id="designation" name="designation" class="form-control" required>
+        </div>
+
+        <!-- Access Role -->
+        <div class="mb-3">
+            <label for="accessRole" class="form-label">Access Role:</label>
+            <input type="text" id="accessRole" name="accessRole" class="form-control" required>
+        </div>
+
+        <!-- Date of Birth -->
+        <div class="mb-3">
+            <label for="Empdob" class="form-label">Date of Birth:</label>
+            <input type="date" id="Empdob" name="dob" class="form-control" required>
+        </div>
+
+        <!-- Date of Join -->
+        <div class="mb-3">
+            <label for="dateOfJoin" class="form-label">Date of Join:</label>
+            <input type="date" id="dateOfJoin" name="dateOfJoin" class="form-control" required>
+        </div>
+
+        <!-- Attached Branch -->
+        <div class="mb-3">
+            <label for="attachedBranch" class="form-label">Attached Branch:</label>
+            <input type="text" id="attachedBranch" name="attachedBranch" class="form-control" required>
+        </div>
+
+        <!-- Address -->
+        <div class="mb-4">
+            <h2 class="mb-3">Address</h2>
+
+            <!-- Address Line 01 -->
+            <div class="mb-2">
+                <label for="EmpaddressLine01" class="form-label">Address Line 01:</label>
+                <input type="text" id="EmpaddressLine01" name="addressLine01" class="form-control" required>
+            </div>
+
+            <!-- Address Line 02 -->
+            <div class="mb-2">
+                <label for="EmpaddressLine02" class="form-label">Address Line 02:</label>
+                <input type="text" id="EmpaddressLine02" name="addressLine02" class="form-control">
+            </div>
+
+            <!-- Address Line 03 -->
+            <div class="mb-2">
+                <label for="EmpaddressLine03" class="form-label">Address Line 03:</label>
+                <input type="text" id="EmpaddressLine03" name="addressLine03" class="form-control">
+            </div>
+
+            <!-- Address Line 04 -->
+            <div class="mb-2">
+                <label for="EmpaddressLine04" class="form-label">Address Line 04:</label>
+                <input type="text" id="EmpaddressLine04" name="addressLine04" class="form-control">
+            </div>
+
+            <!-- Address Line 05 -->
+            <div class="mb-2">
+                <label for="EmpaddressLine05" class="form-label">Address Line 05:</label>
+                <input type="text" id="EmpaddressLine05" name="addressLine05" class="form-control">
+            </div>
+        </div>
+
+        <!-- Contact Number -->
+        <div class="mb-3">
+            <label for="contactNo" class="form-label">Contact Number:</label>
+            <input type="text" id="contactNo" name="contactNo" class="form-control" required>
+        </div>
+
+        <!-- Email -->
+        <div class="mb-3">
+            <label for="Empemail" class="form-label">Email:</label>
+            <input type="email" id="Empemail" name="email" class="form-control" required>
+        </div>
+
+        <!-- Inform in Case of Emergency -->
+        <div class="mb-3">
+            <label for="informEmergency" class="form-label">Inform in Case of Emergency:</label>
+            <input type="text" id="informEmergency" name="informEmergency" class="form-control" required>
+        </div>
+
+        <!-- Emergency Contact -->
+        <div class="mb-3">
+            <label for="emergencyContact" class="form-label">Emergency Contact:</label>
+            <input type="text" id="emergencyContact" name="emergencyContact" class="form-control" required>
+        </div>
+
+        <!-- Buttons -->
+        <div class="mb-4">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-secondary mx-2">Get All</button>
+            <button type="button" class="btn btn-info mx-2">Update</button>
+            <button type="button" class="btn btn-danger mx-2">Delete</button>
+        </div>
+
+        <!-- Table -->
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Employee Code</th>
+                <th>Employee Name</th>
+                <th>Profile Picture</th>
+                <th>Gender</th>
+                <th>Status</th>
+                <th>Designation</th>
+                <th>Access Role</th>
+                <th>Date of Birth</th>
+                <th>Date of Join</th>
+                <th>Attached Branch</th>
+                <th>Address Line 01</th>
+                <th>Address Line 02</th>
+                <th>Address Line 03</th>
+                <th>Address Line 04</th>
+                <th>Address Line 05</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Add rows here -->
+            </tbody>
+        </table>
+    </form>
+</div>
+<!--Item form-->
+
+<div id="manage-item" class="container">
+    <form action="/submit" method="post" enctype="multipart/form-data" class="my-4">
+        <h1 class="mb-4">Item Information Form</h1>
+
+        <!-- Item Code -->
+        <div class="mb-3">
+            <label for="itemCode" class="form-label">Item Code:</label>
+            <input type="text" id="itemCode" name="itemCode" class="form-control" required>
+        </div>
+
+        <!-- Item Description -->
+        <div class="mb-3">
+            <label for="itemDesc" class="form-label">Item Description:</label>
+            <input type="text" id="itemDesc" name="itemDesc" class="form-control" required>
+        </div>
+
+        <!-- Item Picture -->
+        <div class="mb-3">
+            <label for="itemPicture" class="form-label">Item Picture:</label>
+            <input type="file" id="itemPicture" name="itemPicture" class="form-control" accept="image/*">
+        </div>
+
+        <!-- Category -->
+        <div class="mb-3">
+            <label for="category" class="form-label">Category:</label>
+            <input type="text" id="category" name="category" class="form-control" required>
+        </div>
+
+        <!-- Size -->
+        <div class="mb-3">
+            <label for="size" class="form-label">Size:</label>
+            <input type="text" id="size" name="size" class="form-control">
+        </div>
+
+        <!-- Item Quantity -->
+        <div class="mb-3">
+            <label for="itemQty" class="form-label">Item Quantity:</label>
+            <input type="number" id="itemQty" name="itemQty" class="form-control" min="1" required>
+        </div>
+
+        <!-- Supplier Code -->
+        <div class="mb-3">
+            <label for="supplierCode" class="form-label">Supplier Code:</label>
+            <select id="supplierCode" name="supplierCode" class="form-select">
+            </select>
+        </div>
+
+        <!-- Supplier Name -->
+        <div class="mb-3">
+            <label for="supplierName" class="form-label">Supplier Name:</label>
+            <select id="supplierName" name="supplierName" class="form-select">
+            </select>
+        </div>
+
+        <!-- Unit Price - Sale -->
+        <div class="mb-3">
+            <label for="unitPriceSale" class="form-label">Unit Price - Sale:</label>
+            <input type="number" id="unitPriceSale" name="unitPriceSale" class="form-control" step="0.01" required>
+        </div>
+
+        <!-- Unit Price - Buy -->
+        <div class="mb-3">
+            <label for="unitPriceBuy" class="form-label">Unit Price - Buy:</label>
+            <input type="number" id="unitPriceBuy" name="unitPriceBuy" class="form-control" step="0.01" required>
+        </div>
+
+        <!-- Expected Profit -->
+        <div class="mb-3">
+            <label for="expectedProfit" class="form-label">Expected Profit:</label>
+            <input type="number" id="expectedProfit" name="expectedProfit" class="form-control" step="0.01" required readonly>
+        </div>
+
+        <!-- Profit Margin -->
+        <div class="mb-3">
+            <label for="profitMargin" class="form-label">Profit Margin:</label>
+            <input type="number" id="profitMargin" name="profitMargin" class="form-control" step="0.01" required readonly>
+        </div>
+
+        <!-- Status -->
+        <div class="mb-3">
+            <label for="Itemstatus" class="form-label">Status:</label>
+            <select id="Itemstatus" name="status" class="form-select" required>
+                <option value="Low">Low</option>
+                <option value="Available">Available</option>
+                <option value="Not Available">Not Available</option>
+            </select>
+        </div>
+
+        <!-- Buttons -->
+        <div class="mb-4">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-secondary mx-2">Get All</button>
+            <button type="button" class="btn btn-info mx-2">Update</button>
+            <button type="button" class="btn btn-danger mx-2">Delete</button>
+        </div>
+
+        <!-- Table -->
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Item Code</th>
+                <th>Item Description</th>
+                <th>Item Picture</th>
+                <th>Category</th>
+                <th>Size</th>
+                <th>Item Quantity</th>
+                <th>Supplier Code</th>
+                <th>Supplier Name</th>
+                <th>Unit Price - Sale</th>
+                <th>Unit Price - Buy</th>
+                <th>Expected Profit</th>
+                <th>Profit Margin</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Add rows here -->
+            </tbody>
+        </table>
+
+        <!-- Script for calculating expected profit and profit margin -->
+        <script>
+            document.getElementById('unitPriceSale').addEventListener('input', calculateProfitAndMargin);
+            document.getElementById('unitPriceBuy').addEventListener('input', calculateProfitAndMargin);
+
+            function calculateProfitAndMargin() {
+                const unitPriceSale = parseFloat(document.getElementById('unitPriceSale').value);
+                const unitPriceBuy = parseFloat(document.getElementById('unitPriceBuy').value);
+
+                const expectedProfit = unitPriceSale - unitPriceBuy;
+                const profitMargin = (expectedProfit / unitPriceSale) * 100;
+
+                document.getElementById('expectedProfit').value = expectedProfit.toFixed(2);
+                document.getElementById('profitMargin').value = profitMargin.toFixed(2);
+            }
+        </script>
+    </form>
+</div>
+
+
+<!--Sale form-->
+<form id="manage-sale" action="/submit" method="post">
+    <h1>Sales Service Form</h1>
+    <!-- Field for Item Code -->
     <div>
-        <label for="gender">Gender:</label>
-        <select id="gender" name="gender" required>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
+        <label for="ItemCode1">Item code:</label>
+        <select id="ItemCode1" name="itemCode">
         </select>
     </div>
 
-    <!-- Field for Status -->
+    <!-- Field for Order Number -->
     <div>
-        <label for="status">Status:</label>
-        <select id="status" name="status" required>
-            <option value="Active">Active</option>
-            <option value="Inactive">Inactive</option>
+        <label for="orderNo">Order no:</label>
+        <input type="text" id="orderNo" name="orderNo" required>
+    </div>
+
+    <!-- Field for Customer Name -->
+    <div>
+        <label for="customerName1">Customer name:</label>
+        <select id="customerName1" name="customerName">
         </select>
     </div>
 
-    <!-- Field for Designation -->
+    <!-- Field for Item Description -->
     <div>
-        <label for="designation">Designation:</label>
-        <input type="text" id="designation" name="designation" required>
+        <label for="itemDesc1">Item desc:</label>
+        <select id="itemDesc1" name="itemDesc">
+        </select>
     </div>
 
-    <!-- Field for Access Role -->
+    <!-- Field for Size -->
     <div>
-        <label for="accessRole">Access Role:</label>
-        <input type="text" id="accessRole" name="accessRole" required>
+        <label for="size1">Size:</label>
+        <input type="text" id="size1" name="size">
     </div>
 
-    <!-- Field for Date of Birth -->
+    <!-- Field for Unit Price -->
     <div>
-        <label for="Empdob">Date of birth:</label>
-        <input type="date" id="Empdob" name="dob" required>
+        <label for="unitPrice">Unit price:</label>
+        <input type="number" id="unitPrice" name="unitPrice" step="0.01" required>
     </div>
 
-    <!-- Field for Date of Join -->
+    <!-- Field for Item Quantity -->
     <div>
-        <label for="dateOfJoin">Date of join:</label>
-        <input type="date" id="dateOfJoin" name="dateOfJoin" required>
+        <label for="itemQTY1">Item QTY:</label>
+        <select id="itemQTY1" name="itemQTY">
+        </select>
     </div>
 
-    <!-- Field for Attached Branch -->
+    <!-- Field for Total Price -->
     <div>
-        <label for="attachedBranch">Attached Branch:</label>
-        <input type="text" id="attachedBranch" name="attachedBranch" required>
+        <label for="totalPrice">Total price:</label>
+        <input type="number" id="totalPrice" name="totalPrice" step="0.01" required readonly>
     </div>
 
-    <!-- Address Fields -->
+    <!-- Field for Purchase Date -->
     <div>
-        <h2>Address</h2>
-        <!-- Address Line 01 -->
-        <div>
-            <label for="EmpaddressLine01">Address Line 01:</label>
-            <input type="text" id="EmpaddressLine01" name="addressLine01" required>
-        </div>
-
-        <!-- Address Line 02 -->
-        <div>
-            <label for="EmpaddressLine02">Address Line 02:</label>
-            <input type="text" id="EmpaddressLine02" name="addressLine02">
-        </div>
-
-        <!-- Address Line 03 -->
-        <div>
-            <label for="EmpaddressLine03">Address Line 03:</label>
-            <input type="text" id="EmpaddressLine03" name="addressLine03">
-        </div>
-
-        <!-- Address Line 04 -->
-        <div>
-            <label for="EmpaddressLine04">Address Line 04:</label>
-            <input type="text" id="EmpaddressLine04" name="addressLine04">
-        </div>
-
-        <!-- Address Line 05 -->
-        <div>
-            <label for="EmpaddressLine05">Address Line 05:</label>
-            <input type="text" id="EmpaddressLine05" name="addressLine05">
-        </div>
+        <label for="purchaseDate">Purchase date:</label>
+        <input type="date" id="purchaseDate" name="purchaseDate" required>
     </div>
 
-    <!-- Field for Contact Number -->
+    <!-- Field for Payment Method -->
     <div>
-        <label for="contactNo">Contact No.:</label>
-        <input type="text" id="contactNo" name="contactNo" required>
+        <label for="paymentMethod">Payment method:</label>
+        <select id="paymentMethod" name="paymentMethod" required>
+            <option value="Cash">Cash</option>
+            <option value="Credit Card">Credit Card</option>
+        </select>
     </div>
 
-    <!-- Field for Email -->
+    <!-- Field for Added Points -->
     <div>
-        <label for="Empemail">Email:</label>
-        <input type="email" id="Empemail" name="email" required>
+        <label for="addedPoints">Added points:</label>
+        <input type="number" id="addedPoints" name="addedPoints" min="0">
     </div>
 
-    <!-- Field for Inform in Case of Emergency -->
+    <!-- Field for Cashier Name -->
     <div>
-        <label for="informEmergency">Inform in case of emergency:</label>
-        <input type="text" id="informEmergency" name="informEmergency" required>
-    </div>
-
-    <!-- Field for Emergency Contact -->
-    <div>
-        <label for="emergencyContact">Emergency Contact:</label>
-        <input type="text" id="emergencyContact" name="emergencyContact" required>
+        <label for="cashierName">Cashier name:</label>
+        <input type="text" id="cashierName" name="cashierName" required>
     </div>
 
     <div>
@@ -389,27 +883,146 @@
 
     <table>
         <tr>
-            <th>Employee code</th>
-            <th>Employee name</th>
-            <th>Employee Profile Pic</th>
-            <th>Gender</th>
-            <th>Status</th>
-            <th>Designation</th>
-            <th>Access Role</th>
-            <th>Date of birth</th>
-            <th>Date of join</th>
-            <th>Attached Branch</th>
-            <th>Address Line 01</th>
-            <th>Address Line 02</th>
-            <th>Address Line 03</th>
-            <th>Address Line 04</th>
-            <th>Address Line 05</th>
+            <th>Item code</th>
+            <th>Order no</th>
+            <th>Customer name</th>
+            <th>Item desc</th>
+            <th>Size</th>
+            <th>Unit price</th>
+            <th>Item qty</th>
+            <th>Total price</th>
+            <th>Purchase date</th>
+            <th>Payment method</th>
+            <th>Added points</th>
+            <th>Cashier name</th>
         </tr>
 
         <!-- Additional rows can be added here for more customers -->
     </table>
 </form>
 
+<!--Supplier form-->
+<form id="manage-supplier" action="/submit" method="post">
+    <h1>Supplier Information Form</h1>
+    <!-- Field for Supplier Code -->
+    <div>
+        <label for="supplierCode1">Supplier code:</label>
+        <input type="text" id="supplierCode1" name="supplierCode" required>
+    </div>
 
+    <!-- Field for Supplier Name -->
+    <div>
+        <label for="supplierName1">Supplier name:</label>
+        <input type="text" id="supplierName1" name="supplierName" required>
+    </div>
+
+    <!-- Field for Category -->
+    <div>
+        <label for="category1">Category:</label>
+        <input type="text" id="category1" name="category" required>
+    </div>
+
+    <!-- Address Fields -->
+    <div>
+        <h2>Address</h2>
+        <!-- Address Line 01 -->
+        <div>
+            <label for="addressLine01">Address Line 01:</label>
+            <input type="text" id="addressLine01" name="addressLine01" required>
+        </div>
+
+        <!-- Address Line 02 -->
+        <div>
+            <label for="addressLine02">Address Line 02:</label>
+            <input type="text" id="addressLine02" name="addressLine02">
+        </div>
+
+        <!-- Address Line 03 -->
+        <div>
+            <label for="addressLine03">Address Line 03:</label>
+            <input type="text" id="addressLine03" name="addressLine03">
+        </div>
+
+        <!-- Address Line 04 -->
+        <div>
+            <label for="addressLine04">Address Line 04:</label>
+            <input type="text" id="addressLine04" name="addressLine04">
+        </div>
+
+        <!-- Address Line 05 -->
+        <div>
+            <label for="addressLine05">Address Line 05:</label>
+            <input type="text" id="addressLine05" name="addressLine05">
+        </div>
+
+        <!-- Address Line 06 -->
+        <div>
+            <label for="addressLine06">Address Line 06:</label>
+            <input type="text" id="addressLine06" name="addressLine06">
+        </div>
+    </div>
+
+    <!-- Field for Contact Number 1 -->
+    <div>
+        <label for="contactNo1">Contact No.1:</label>
+        <input type="text" id="contactNo1" name="contactNo1" required>
+    </div>
+
+    <!-- Field for Contact Number 2 -->
+    <div>
+        <label for="contactNo2">Contact No.2:</label>
+        <input type="text" id="contactNo2" name="contactNo2">
+    </div>
+
+    <!-- Field for Email -->
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+    </div>
+
+    <div>
+        <button type="submit" class="btn-save">Save</button>
+        <button type="button" class="btn-getAll">GetAll</button>
+        <button type="button" class="btn-update">Update</button>
+        <button type="button" class="btn-delete">Delete</button>
+    </div>
+
+    <table>
+        <tr>
+            <th>Supplier code</th>
+            <th>Supplier name</th>
+            <th>Category</th>
+            <th>Address Line 01</th>
+            <th>Address Line 02</th>
+            <th>Address Line 03</th>
+            <th>Address Line 04</th>
+            <th>Address Line 05</th>
+            <th>Address Line 06</th>
+            <th>Contact No.1</th>
+            <th>Contact No.2</th>
+            <th>Email</th>
+        </tr>
+
+        <!-- Additional rows can be added here for more customers -->
+    </table>
+</form>
+<script>
+    // Script to automatically calculate total price based on unit price and item quantity
+    document.getElementById('unitPrice').addEventListener('input', calculateTotalPrice);
+    document.getElementById('itemQty').addEventListener('input', calculateTotalPrice);
+
+    function calculateTotalPrice() {
+        const unitPrice = parseFloat(document.getElementById('unitPrice').value);
+        const itemQty = parseInt(document.getElementById('itemQty').value);
+        const totalPrice = unitPrice * itemQty;
+
+        document.getElementById('totalPrice').value = totalPrice.toFixed(2);
+    }
+</script>
+
+<!-- Bootstrap JS -->
+<script src="pageJS/page.js" ></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
